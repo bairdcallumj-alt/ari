@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rewa Kings</title>
+<style>
+:root{
+  --char:#1b1b1f;
+  --char2:#302c32;
+  --gold:#d8b25a;
+  --copper:#9d5b34;
+  --cream:#f8f4ea;
+  --paper:#fffdf9;
+  --maroon:#61293d;
+  --green:#1f6f53;
+  --green-soft:#dff4e7;
+  --red:#b73a3a;
+  --red-soft:#fde3e3;
+  --ink:#26242a;
+  --muted:#6f6a70;
+  --shadow:0 18px 40px rgba(0,0,0,.18);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left,rgba(216,178,90,.18),transparent 30%),
+    linear-gradient(135deg,#eee3cf,#d8d2c5);
+}
+header{
+  min-height:78vh;
+  display:grid;
+  place-items:center;
+  padding:54px 22px;
+  position:relative;
+  overflow:hidden;
+  color:white;
+  background:
+    linear-gradient(rgba(0,0,0,.46),rgba(0,0,0,.58)),
+    url('story-hero.jpg') center/cover no-repeat,
+    linear-gradient(135deg,#2a292d,#6a3d28);
+}
+header::after{
+  content:"";
+  position:absolute;
+  left:-10%;
+  bottom:-92px;
+  width:120%;
+  height:170px;
+  background:var(--cream);
+  transform:rotate(-3deg);
+}
+.hero{position:relative;z-index:2;max-width:950px;text-align:center}
+.eyebrow{
+  display:inline-block;
+  padding:8px 17px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;
+  background:rgba(255,255,255,.10);
+  backdrop-filter:blur(6px);
+  font:800 .82rem Arial,sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+h1{
+  font-size:clamp(3.5rem,9vw,7rem);
+  line-height:.9;
+  margin:.28em 0 .15em;
+  text-shadow:0 8px 28px rgba(0,0,0,.42);
+}
+.subtitle{
+  max-width:790px;
+  margin:0 auto;
+  font:1.12rem/1.7 Arial,sans-serif;
+  color:rgba(255,255,255,.92);
+}
+.hero-buttons{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.button{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:999px;
+  text-decoration:none;
+  font:800 1rem Arial,sans-serif;
+}
+.button.primary{background:var(--gold);color:#241f15}
+.button.secondary{color:white;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.10)}
+
+main{background:var(--cream);padding:36px 20px 80px}
+.wrap{width:min(1120px,100%);margin:auto}
+.intro-card,.story-card,.activities-card{
+  background:var(--paper);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:clamp(28px,5vw,50px);
+  margin-bottom:34px;
+  border:1px solid rgba(97,41,61,.10);
+}
+h2{
+  font-size:clamp(2.2rem,4vw,3.5rem);
+  line-height:1;
+  color:var(--maroon);
+  margin:0 0 18px;
+}
+.intro-text{
+  max-width:850px;
+  margin:0;
+  font:1.05rem/1.75 Arial,sans-serif;
+  color:#555057;
+}
+.student-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:24px;
+  font-family:Arial,sans-serif;
+}
+.student-details label{display:grid;gap:7px;font-weight:800;color:var(--maroon)}
+.student-details input{
+  border:1px solid rgba(97,41,61,.22);
+  border-radius:14px;
+  padding:13px 14px;
+  font:inherit;
+  background:white;
+}
+
+details{
+  background:white;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 12px 28px rgba(0,0,0,.10);
+  border:1px solid rgba(97,41,61,.10);
+  margin:18px 0;
+}
+summary{
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:23px 26px;
+  color:white;
+  background:linear-gradient(135deg,var(--maroon),var(--char));
+  font:900 1.2rem Arial,sans-serif;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"+";
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:var(--gold);
+  color:#272018;
+  flex:0 0 auto;
+  font-size:1.3rem;
+}
+details[open] summary::after{content:"–"}
+.chapter{padding:28px}
+.chapter-grid{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:24px;
+  align-items:start;
+}
+.story-text p{
+  font-size:1.09rem;
+  line-height:1.88;
+  margin:0 0 16px;
+}
+.story-image{
+  width:100%;
+  min-height:300px;
+  height:100%;
+  max-height:470px;
+  object-fit:cover;
+  border-radius:22px;
+  box-shadow:0 12px 28px rgba(0,0,0,.16);
+  background:linear-gradient(135deg,#3a3a3a,#7d4d33);
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:24px;
+}
+.gallery img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:18px;
+  box-shadow:0 10px 22px rgba(0,0,0,.14);
+}
+
+.activity-grid{display:grid;gap:20px;margin-top:26px}
+.activity{
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(97,41,61,.12);
+  background:linear-gradient(135deg,#fff,#faf5ea);
+}
+.activity-header{
+  padding:18px 22px;
+  color:white;
+  background:linear-gradient(135deg,var(--copper),var(--maroon));
+}
+.activity-header h3{margin:0 0 6px;font-size:1.35rem}
+.activity-header p{margin:0;font: .95rem/1.5 Arial,sans-serif;color:rgba(255,255,255,.86)}
+.activity-body{padding:22px;font-family:Arial,sans-serif;color:#514d52;line-height:1.65}
+
+.tf-question{
+  background:white;
+  border:1px solid rgba(97,41,61,.12);
+  border-radius:14px;
+  padding:16px;
+  margin:10px 0;
+  transition:.2s;
+}
+.tf-question.correct{background:var(--green-soft);border-color:var(--green)}
+.tf-question.incorrect{background:var(--red-soft);border-color:var(--red)}
+.tf-question p{margin:0 0 12px;font-weight:800}
+.tf-buttons{display:flex;gap:10px;flex-wrap:wrap}
+.tf-button,.choice-button,.flip-card,.action-button{
+  border:0;
+  border-radius:999px;
+  cursor:pointer;
+  font:800 .95rem Arial,sans-serif;
+}
+.tf-button,.choice-button{padding:10px 16px;background:#e9e6e2;color:#2c292d}
+.feedback{min-height:22px;margin-top:9px;font-weight:800}
+.correct .feedback{color:var(--green)}
+.incorrect .feedback{color:#8b2626}
+
+.question-block{
+  background:white;
+  border:1px solid rgba(97,41,61,.12);
+  border-radius:16px;
+  padding:16px;
+  margin:12px 0;
+}
+.question-block label{display:block;font-weight:800;color:var(--maroon);margin-bottom:9px}
+.question-block textarea{
+  width:100%;
+  min-height:90px;
+  resize:vertical;
+  border:1px solid rgba(97,41,61,.20);
+  border-radius:12px;
+  padding:12px;
+  font:inherit;
+}
+
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.flip-card{
+  min-height:110px;
+  padding:15px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--maroon),var(--char2));
+  color:white;
+  box-shadow:0 8px 18px rgba(0,0,0,.13);
+}
+.flip-card.revealed{
+  background:linear-gradient(135deg,var(--gold),#f0d99c);
+  color:#2c2418;
+}
+
+.language-choice{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+.choice-button.selected{background:var(--maroon);color:white}
+.language-feedback{margin-top:12px;font-weight:800;color:var(--maroon)}
+
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+.action-button{
+  padding:13px 19px;
+  background:var(--maroon);
+  color:white;
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
+}
+.action-button.gold{background:var(--gold);color:#2d2518}
+.overall-feedback{margin-top:16px;font:800 1rem Arial,sans-serif;color:var(--maroon)}
+
+footer{
+  background:var(--char);
+  color:#ddd;
+  text-align:center;
+  padding:28px 20px;
+  font-family:Arial,sans-serif;
+}
+@media(max-width:850px){
+  .chapter-grid,.student-details{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .memory-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .gallery,.memory-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <section class="hero">
+    <div class="eyebrow">Reading Unit • Manurewa Intermediate</div>
+    <h1>REWA KINGS</h1>
+    <p class="subtitle">Five friends. One abandoned factory. One hidden briefcase. A thousand possible futures.</p>
+    <div class="hero-buttons">
+      <a class="button primary" href="#story">Read the Story</a>
+      <a class="button secondary" href="#activities">Activities</a>
+    </div>
+  </section>
+</header>
+
+<main>
+<div class="wrap">
+
+<section class="intro-card">
+  <h2>A Modern Legend</h2>
+  <p class="intro-text">Read each part carefully. Notice how the factory changes from an abandoned building into a symbol of memory, friendship and possibility.</p>
+  <div class="student-details">
+    <label>Student name<input id="studentName" type="text" placeholder="Type your name"></label>
+    <label>Class<input id="studentClass" type="text" placeholder="Type your class"></label>
+  </div>
+</section>
+
+<section class="story-card" id="story">
+<h2>Read the Story</h2>
+
+<details open>
+<summary>Part 1: The Factory</summary>
+<div class="chapter">
+  <div class="chapter-grid">
+    <div class="story-text">
+      <p>The old factory stood at the edge of Manurewa like a forgotten monument to another era, its rusting steel frame rising above overgrown grass and cracked concrete that had slowly reclaimed the ground where hundreds of workers had once arrived before dawn each morning.</p>
+      <p>During the 1980s the site had been a hive of activity, with trucks moving through the gates, machinery humming throughout the day, and workers filling the surrounding streets at the beginning and end of every shift.</p>
+      <p>Some people said the factory built cars, while others insisted it only assembled them from parts shipped in from overseas, but nobody in Ari's generation seemed entirely sure.</p>
+      <p>Ari and his mates passed the factory almost every day on their way home from school, yet it always seemed to draw their attention back, as though the silent building carried stories that refused to disappear.</p>
+      <p>Looking at the shattered windows, fading signs and empty carparks, Ari could not help wondering what had been lost—and whether something important might still be waiting to be found.</p>
+    </div>
+    <img class="story-image" src="story-part1.jpg" alt="Ari and his friends walking past the abandoned factory">
+  </div>
+
+  <div class="activity-grid">
+    <div class="activity">
+      <div class="activity-header"><h3>Language Device</h3><p>Identify the device used in the sentence.</p></div>
+      <div class="activity-body">
+        <strong>“The factory stood like a forgotten monument.”</strong>
+        <div class="language-choice" data-answer="simile">
+          <button class="choice-button" data-choice="metaphor">Metaphor</button>
+          <button class="choice-button" data-choice="simile">Simile</button>
+          <button class="choice-button" data-choice="personification">Personification</button>
+        </div>
+        <div class="language-feedback"></div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-header"><h3>Memory Flip</h3><p>Flip each card to retrieve an important detail.</p></div>
+      <div class="activity-body">
+        <div class="memory-grid">
+          <button class="flip-card" data-front="Where?" data-back="Manurewa">Where?</button>
+          <button class="flip-card" data-front="When?" data-back="The 1980s">When?</button>
+          <button class="flip-card" data-front="Who?" data-back="Ari and his mates">Who?</button>
+          <button class="flip-card" data-front="Symbol?" data-back="Lost opportunity">Symbol?</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</details>
+
+<details>
+<summary>Part 2: The Search</summary>
+<div class="chapter">
+  <div class="story-text">
+    <p>What began as a place to explore quickly became an obsession. Every afternoon, the boys found themselves drawn back to the factory, pushing deeper into sections of the building they had never noticed before.</p>
+    <p>Behind rusted roller doors and along dim corridors lined with peeling paint, they discovered traces of the people who had once spent their lives there.</p>
+    <p>Dust-covered filing cabinets still contained employment records listing names, addresses and start dates, transforming anonymous workers into real people who had once walked the same concrete floors.</p>
+    <p>Faded photographs showed smiling groups gathered beside machinery, their faces frozen in moments of pride that seemed strangely at odds with the silence now filling the building.</p>
+    <p>Piece by piece, the boys understood that the factory had once been the beating heart of the neighbourhood, and its loss had left a mark long after the machines had fallen silent.</p>
+  </div>
+
+  <div class="gallery">
+    <img src="story-part2a.jpg" alt="Old factory photographs">
+    <img src="story-part2b.jpg" alt="Employment records">
+    <img src="story-part2c.jpg" alt="Graffiti and forgotten rooms">
+  </div>
+
+  <div class="activity-grid">
+    <div class="activity">
+      <div class="activity-header"><h3>True or False</h3><p>Choose the best answer.</p></div>
+      <div class="activity-body">
+        <div class="tf-question" data-part="2" data-question="The boys were only searching for treasure." data-answer="false">
+          <p>The boys were only searching for treasure.</p>
+          <div class="tf-buttons"><button class="tf-button" data-choice="true">True</button><button class="tf-button" data-choice="false">False</button></div>
+          <div class="feedback"></div>
+        </div>
+        <div class="tf-question" data-part="2" data-question="The records helped make the old workers feel real." data-answer="true">
+          <p>The records helped make the old workers feel real.</p>
+          <div class="tf-buttons"><button class="tf-button" data-choice="true">True</button><button class="tf-button" data-choice="false">False</button></div>
+          <div class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-header"><h3>Inference</h3><p>Explain what the evidence suggests.</p></div>
+      <div class="activity-body">
+        <div class="question-block">
+          <label>Why do the photographs feel different inside the silent factory?</label>
+          <textarea data-part="2" data-question="Why do the photographs feel different inside the silent factory?"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</details>
+
+<details>
+<summary>Part 3: The Kings</summary>
+<div class="chapter">
+  <div class="chapter-grid">
+    <div class="story-text">
+      <p>As intermediate school moved towards its end, the boys began talking more often about what would happen next.</p>
+      <p>High school waited ahead of them, bringing new people, new choices and the uncomfortable possibility that their friendship might not remain the same.</p>
+      <p>Some imagined leaving Manurewa. Others wanted to stay close to family. Each boy carried a different idea of success.</p>
+      <p>The factory became the place where they met, argued, laughed and tried to make sense of the future.</p>
+      <p>Among the rusted walls and forgotten machines, they had created their own Camelot.</p>
+    </div>
+    <img class="story-image" src="story-part3.jpg" alt="The boys sitting together inside the factory">
+  </div>
+
+  <div class="activity-grid">
+    <div class="activity">
+      <div class="activity-header"><h3>Symbolism</h3><p>Think beyond the literal meaning.</p></div>
+      <div class="activity-body">
+        <div class="question-block">
+          <label>Why is the factory described as their “Camelot”?</label>
+          <textarea data-part="3" data-question="Why is the factory described as their Camelot?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-header"><h3>Memory Flip</h3><p>Recall the questions facing the boys.</p></div>
+      <div class="activity-body">
+        <div class="memory-grid">
+          <button class="flip-card" data-front="Who leaves?" data-back="A question about change">Who leaves?</button>
+          <button class="flip-card" data-front="Who stays?" data-back="A question about belonging">Who stays?</button>
+          <button class="flip-card" data-front="Who succeeds?" data-back="A question about ambition">Who succeeds?</button>
+          <button class="flip-card" data-front="What is success?" data-back="Different for each boy">What is success?</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</details>
+
+<details>
+<summary>Part 4: The Key</summary>
+<div class="chapter">
+  <div class="story-text">
+    <p>The door had been there the entire time, hidden behind a collapsed storage area at the far end of the factory.</p>
+    <p>Unlike the other doors, this one remained firmly closed. A thick layer of dust covered its surface, while a large iron padlock secured it shut. Protruding from the centre of the lock was a single rusted key.</p>
+    <p>Each boy tried to turn it. The key refused to move.</p>
+    <p>Eventually Ari stepped forward. He wrapped his fingers around the cold metal and applied gentle pressure. The lock responded instantly.</p>
+    <p>The sharp click echoed through the factory. Beyond the door sat a metal briefcase. Inside, neatly stacked bundles of cash filled the case from edge to edge.</p>
+  </div>
+
+  <div class="gallery">
+    <img src="story-part4a.jpg" alt="The hidden locked door">
+    <img src="story-part4b.jpg" alt="Ari turning the key">
+    <img src="story-part4c.jpg" alt="The briefcase full of cash">
+  </div>
+
+  <div class="activity-grid">
+    <div class="activity">
+      <div class="activity-header"><h3>Writer's Craft</h3><p>How is suspense created?</p></div>
+      <div class="activity-body">
+        <div class="question-block">
+          <label>Explain how the short sentences slow the scene down and build tension.</label>
+          <textarea data-part="4" data-question="How do the short sentences build tension?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-header"><h3>True or False</h3><p>Check the important details.</p></div>
+      <div class="activity-body">
+        <div class="tf-question" data-part="4" data-question="Every boy could turn the key." data-answer="false">
+          <p>Every boy could turn the key.</p>
+          <div class="tf-buttons"><button class="tf-button" data-choice="true">True</button><button class="tf-button" data-choice="false">False</button></div>
+          <div class="feedback"></div>
+        </div>
+        <div class="tf-question" data-part="4" data-question="The briefcase was filled with cash." data-answer="true">
+          <p>The briefcase was filled with cash.</p>
+          <div class="tf-buttons"><button class="tf-button" data-choice="true">True</button><button class="tf-button" data-choice="false">False</button></div>
+          <div class="feedback"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</details>
+
+<details>
+<summary>Part 5: Futures</summary>
+<div class="chapter">
+  <div class="story-text">
+    <p>Standing around the open briefcase, each boy began to imagine what the money might make possible.</p>
+    <p>Lance imagined status, cars, attention and the feeling of being known. Percy imagined education, business and success. Gali imagined family, community and giving something back. Mordred imagined escape, power and freedom.</p>
+    <p>Ari did not see one future. He saw hundreds: a branching tree of choices, mistakes, friendships, losses and opportunities.</p>
+    <p>Then the futures slipped away. The offices, sports grounds, city skylines and family homes dissolved into the fading afternoon light.</p>
+    <p>The boys had not moved. The briefcase was still open. The money still sat between them. Beyond the broken windows, the lights of Manurewa flickered to life.</p>
+    <p>Five boys. One briefcase. A thousand possible futures.</p>
+  </div>
+
+  <div class="gallery">
+    <img src="story-part5a.jpg" alt="The boys imagining different futures">
+    <img src="story-part5b.jpg" alt="Ari imagining many possible lives">
+    <img src="story-part5c.jpg" alt="The boys back in the factory at sunset">
+  </div>
+
+  <div class="activity-grid">
+    <div class="activity">
+      <div class="activity-header"><h3>Theme</h3><p>What is the story really asking?</p></div>
+      <div class="activity-body">
+        <div class="question-block">
+          <label>What does the money represent beyond its dollar value?</label>
+          <textarea data-part="5" data-question="What does the money represent beyond its dollar value?"></textarea>
+        </div>
+        <div class="question-block">
+          <label>What do you think the final line “Five boys. One briefcase. A thousand possible futures.” mean?</label>
+          <textarea data-part="5" data-question="What does Five boys. One briefcase. A thousand possible futures. mean?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-header"><h3>Language Device</h3><p>Identify the strongest device.</p></div>
+      <div class="activity-body">
+        <strong>“A branching tree of choices.”</strong>
+        <div class="language-choice" data-answer="metaphor">
+          <button class="choice-button" data-choice="simile">Simile</button>
+          <button class="choice-button" data-choice="metaphor">Metaphor</button>
+          <button class="choice-button" data-choice="alliteration">Alliteration</button>
+        </div>
+        <div class="language-feedback"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</details>
+</section>
+
+<section class="activities-card" id="activities">
+  <h2>Finish and Export</h2>
+  <p class="intro-text">Check the true or false questions, then download your work as a CSV file.</p>
+  <div class="actions">
+    <button class="action-button" id="checkAll">Check My Score</button>
+    <button class="action-button gold" id="downloadCsv">Download CSV</button>
+  </div>
+  <div id="overallFeedback" class="overall-feedback"></div>
+</section>
+
+</div>
+</main>
+
+<footer>Rewa Kings • Reading Unit • Manurewa Intermediate</footer>
+
+<script>
+const tfQuestions=[...document.querySelectorAll('.tf-question')];
+
+tfQuestions.forEach((question,index)=>{
+  question.dataset.id=index+1;
+  question.querySelectorAll('.tf-button').forEach(button=>{
+    button.addEventListener('click',()=>{
+      const choice=button.dataset.choice;
+      const answer=question.dataset.answer;
+      question.dataset.choice=choice;
+      question.classList.remove('correct','incorrect');
+      const feedback=question.querySelector('.feedback');
+      if(choice===answer){
+        question.classList.add('correct');
+        feedback.textContent='Correct!';
+      }else{
+        question.classList.add('incorrect');
+        feedback.textContent='Not quite. Try again.';
+      }
+    });
+  });
+});
+
+document.querySelectorAll('.flip-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const revealed=card.classList.toggle('revealed');
+    card.textContent=revealed?card.dataset.back:card.dataset.front;
+  });
+});
+
+document.querySelectorAll('.language-choice').forEach(group=>{
+  group.querySelectorAll('.choice-button').forEach(button=>{
+    button.addEventListener('click',()=>{
+      group.querySelectorAll('.choice-button').forEach(b=>b.classList.remove('selected'));
+      button.classList.add('selected');
+      group.dataset.choice=button.dataset.choice;
+      const feedback=group.nextElementSibling;
+      feedback.textContent=button.dataset.choice===group.dataset.answer?'Correct!':'Not quite. Try again.';
+    });
+  });
+});
+
+document.getElementById('checkAll').addEventListener('click',()=>{
+  const answered=tfQuestions.filter(q=>q.dataset.choice);
+  const correct=tfQuestions.filter(q=>q.dataset.choice===q.dataset.answer);
+  const box=document.getElementById('overallFeedback');
+  box.textContent=answered.length<tfQuestions.length
+    ?`You have answered ${answered.length} of ${tfQuestions.length} true or false questions.`
+    :`True or false score: ${correct.length} out of ${tfQuestions.length}.`;
+});
+
+function csvEscape(value){
+  const text=String(value??'');
+  return '"'+text.replaceAll('"','""')+'"';
+}
+
+document.getElementById('downloadCsv').addEventListener('click',()=>{
+  const name=document.getElementById('studentName').value.trim()||'Not entered';
+  const studentClass=document.getElementById('studentClass').value.trim()||'Not entered';
+  const rows=[['Student Name','Class','Part','Activity Type','Question','Student Answer','Correct Answer','Result']];
+
+  tfQuestions.forEach(q=>{
+    const choice=q.dataset.choice||'Not answered';
+    const result=choice==='Not answered'?'Not answered':(choice===q.dataset.answer?'Correct':'Incorrect');
+    rows.push([name,studentClass,q.dataset.part,'True or False',q.dataset.question,choice,q.dataset.answer,result]);
+  });
+
+  document.querySelectorAll('textarea[data-question]').forEach(t=>{
+    rows.push([name,studentClass,t.dataset.part,'Written Response',t.dataset.question,t.value.trim()||'Not answered','','']);
+  });
+
+  document.querySelectorAll('.language-choice').forEach((group,index)=>{
+    const choice=group.dataset.choice||'Not answered';
+    const result=choice==='Not answered'?'Not answered':(choice===group.dataset.answer?'Correct':'Incorrect');
+    rows.push([name,studentClass,index===0?'1':'5','Language Device','Identify the language device',choice,group.dataset.answer,result]);
+  });
+
+  const csv=rows.map(row=>row.map(csvEscape).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=`rewa-kings-results-${name.replace(/[^a-z0-9]+/gi,'-').toLowerCase()}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>

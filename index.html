@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rewa Kings</title>
+<style>
+:root{
+--char:#1c1b1f;
+--char2:#2f2c33;
+--gold:#d8b25a;
+--copper:#9d5b34;
+--cream:#f8f4ea;
+--paper:#fffdf9;
+--maroon:#61293d;
+--shadow:0 18px 40px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,serif;background:linear-gradient(135deg,#eee3cf,#d8d2c5);color:#222}
+header{
+min-height:88vh;
+display:grid;
+place-items:center;
+padding:40px;
+position:relative;
+overflow:hidden;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)),
+url('hero.jpg') center/cover no-repeat,
+linear-gradient(135deg,#2a292d,#6a3d28);
+}
+header:after{
+content:"";
+position:absolute;
+left:-10%;
+bottom:-90px;
+width:120%;
+height:170px;
+background:var(--cream);
+transform:rotate(-3deg);
+}
+.hero{position:relative;z-index:2;text-align:center;color:white;max-width:900px}
+.badge{
+display:inline-block;
+padding:8px 18px;
+border:1px solid rgba(255,255,255,.5);
+border-radius:999px;
+font:700 .8rem Arial;
+letter-spacing:.15em;
+text-transform:uppercase;
+background:rgba(255,255,255,.08)
+}
+h1{
+font-size:clamp(3.5rem,9vw,7rem);
+margin:.3em 0 .1em;
+line-height:.9;
+}
+.subtitle{
+font:1.2rem/1.7 Arial;
+opacity:.92;
+max-width:700px;
+margin:auto;
+}
+.buttons{margin-top:35px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn{
+padding:15px 26px;
+border-radius:999px;
+text-decoration:none;
+font:700 1rem Arial;
+transition:.2s;
+}
+.primary{background:var(--gold);color:#222}
+.secondary{border:1px solid white;color:white}
+.btn:hover{transform:translateY(-3px)}
+main{background:var(--cream);padding:40px 20px 80px}
+.wrap{max-width:1180px;margin:auto}
+h2{font-size:2.6rem;color:var(--maroon)}
+.gallery{
+display:flex;
+gap:18px;
+overflow-x:auto;
+padding:10px 0 30px;
+scroll-snap-type:x mandatory;
+}
+.slide{
+flex:0 0 min(78vw,650px);
+height:360px;
+border-radius:28px;
+overflow:hidden;
+position:relative;
+scroll-snap-align:center;
+background:linear-gradient(135deg,#3a3a3a,#7d4d33);
+box-shadow:var(--shadow);
+}
+.slide::before{
+content:"";
+position:absolute;inset:0;
+background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.65));
+}
+.caption{
+position:absolute;
+bottom:24px;
+left:24px;
+right:24px;
+color:white;
+z-index:2;
+font-family:Arial;
+}
+.caption strong{display:block;font-size:1.8rem;margin-bottom:6px}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:28px;
+margin-top:35px;
+}
+.card{
+background:var(--paper);
+padding:34px;
+border-radius:24px;
+box-shadow:var(--shadow);
+border-top:8px solid var(--gold);
+}
+.card h3{font-size:2rem;color:var(--maroon);margin-top:0}
+.link{
+display:inline-block;
+margin-top:20px;
+padding:12px 22px;
+background:var(--char);
+color:white;
+text-decoration:none;
+border-radius:999px;
+font-family:Arial;
+font-weight:bold;
+}
+.quote{
+background:linear-gradient(135deg,var(--maroon),var(--char));
+color:white;
+padding:40px;
+border-radius:28px;
+margin:50px 0;
+box-shadow:var(--shadow);
+text-align:center;
+}
+.quote p{font-size:1.6rem;margin:0}
+footer{
+background:#222;
+color:#ddd;
+padding:25px;
+text-align:center;
+font-family:Arial;
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="hero">
+<div class="badge">Reading Unit • Manurewa Intermediate</div>
+<h1>REWA KINGS</h1>
+<p class="subtitle">
+A modern legend inspired by King Arthur. Five friends. One abandoned factory. One hidden briefcase. A thousand possible futures.
+</p>
+<div class="buttons">
+<a class="btn primary" href="original.html">Read the Original Story</a>
+<a class="btn secondary" href="story.html">Read Rewa Kings</a>
+</div>
+</div>
+</header>
+
+<main>
+<div class="wrap">
+
+<h2>Explore the World of Rewa Kings</h2>
+
+<div class="gallery">
+<div class="slide" style="background-image: linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)), url('factory.jpg'); background-size:cover; background-position:center;"><div class="caption"><strong>The Factory</strong>The forgotten heart of Manurewa.</div></div>
+<div class="slide" style="background-image: linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)), url('search.jpg'); background-size:cover; background-position:center;"><div class="caption"><strong>The Search</strong>Every room hides another story.</div></div>
+<div class="slide" style="background-image: linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)), url('records.jpg'); background-size:cover; background-position:center;"><div class="caption"><strong>Old Records</strong>Lives frozen in dusty filing cabinets.</div></div>
+<div class="slide" style="background-image: linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)), url('door.jpg'); background-size:cover; background-position:center;"><div class="caption"><strong>The Locked Door</strong>Some mysteries wait patiently.</div></div>
+<div class="slide" style="background-image: linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)), url('briefcase.jpg'); background-size:cover; background-position:center;"><div class="caption"><strong>The Briefcase</strong>One discovery. Endless possibilities.</div></div>
+<div class="slide" style="background-image: linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)), url('future.jpg'); background-size:cover; background-position:center;"><div class="caption"><strong>The Future</strong>Who will each boy become?</div></div>
+</div>
+
+<div class="quote">
+<p><strong>"Every legend asks the same question:</strong><br>
+What kind of person will you become?"</p>
+</div>
+
+<div class="cards">
+<div class="card">
+<h3>🛡 The Original Story</h3>
+<p>Meet King Arthur, Camelot and the Knights of the Round Table. Discover the classic legend that inspired <em>Rewa Kings</em>.</p>
+<a class="link" href="original.html">Read Story →</a>
+</div>
+
+<div class="card">
+<h3>👑 Rewa Kings</h3>
+<p>Follow Ari and his friends as they uncover the forgotten history of an abandoned factory and imagine the futures that lie ahead.</p>
+<a class="link" href="story.html">Read Story →</a>
+</div>
+</div>
+
+</div>
+</main>
+
+<footer>
+Rewa Kings • Reading Unit • Manurewa Intermediate
+</footer>
+
+</body>
+</html>
